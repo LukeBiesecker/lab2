@@ -42,6 +42,8 @@ try:
   GPIO.add_event_detect(y,GPIO.RISING,callback = mycallback)
   GPIO.add_event_detect(s,GPIO.FALLING,callback = mycallback)
   pwm.start(50)
+  while True:
+    pass
 except KeyboardInterrupt:
   print('\nExiting')
 pwm.stop()
