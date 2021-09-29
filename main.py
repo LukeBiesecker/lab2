@@ -25,7 +25,7 @@ def mycallback(signal):
     for ic in range(100,0,-1):
       pwm.ChangeDutyCycle(ic)
       sleep(0.01)
-    pwm.stop
+    pwm.stop()
       
   if(signal==s):
     pwmm.start(0)
@@ -35,7 +35,7 @@ def mycallback(signal):
     for mc in range(100,0,-1):
       pwmm.ChangeDutyCycle(mc)
       sleep(0.01)
-    pwmm.stop
+    pwmm.stop()
     
 pwmmm = GPIO.PWM(p,1)
 
