@@ -21,18 +21,18 @@ def mycallback(signal):
   pwmm.start(0)
   if(signal==y):
     print('first button')
-    for dc in range(101):
+    for dc in range(100):
       pwm.ChangeDutyCycle(dc)
       sleep(0.01)
-    for ic in range(101,0,-1):
+    for ic in range(100,0,-1):
       pwm.ChangeDutyCycle(ic)
       sleep(0.01)
   if(signal==s):
     print('second button')
-    for pc in range(101):
+    for pc in range(100):
       pwmm.ChangeDutyCycle(pc)
       sleep(0.01)
-    for mc in range(101,0,-1):
+    for mc in range(100,0,-1):
       pwmm.ChangeDutyCycle(mc)
       sleep(0.01)
 pwmmm = GPIO.PWM(p,1)
