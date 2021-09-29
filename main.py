@@ -17,10 +17,9 @@ pwm = GPIO.PWM(e, 1)
 pwmm = GPIO.PWM(n, 1)
 
 def mycallback(signal):
-  pwm.start(0)
-  pwmm.start(0)
   if(signal==y):
     print('first button')
+    pwm.start(0)
     for dc in range(100):
       pwm.ChangeDutyCycle(dc)
       sleep(0.01)
@@ -29,6 +28,7 @@ def mycallback(signal):
       sleep(0.01)
   if(signal==s):
     print('second button')
+    pwmm.start(0)
     for pc in range(100):
       pwmm.ChangeDutyCycle(pc)
       sleep(0.01)
@@ -41,7 +41,7 @@ pwmmm = GPIO.PWM(p,1)
 try:
   GPIO.add_event_detect(y,GPIO.RISING,callback = mycallback)
   GPIO.add_event_detect(s,GPIO.FALLING,callback = mycallback)
-  pwm.start(50)
+  pwmmm.start(50)
   while True:
     pass
 except KeyboardInterrupt:
