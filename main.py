@@ -20,6 +20,7 @@ def mycallback(signal):
   pwm.start(0)
   pwmm.start(0)
   if(signal==y):
+    print('first button')
     for dc in range(101):
       pwm.ChangeDutyCycle(dc)
       sleep(0.01)
@@ -27,6 +28,7 @@ def mycallback(signal):
       pwm.ChangeDutyCycle(ic)
       sleep(0.01)
   if(signal==s):
+    print('second button')
     for pc in range(101):
       pwmm.ChangeDutyCycle(pc)
       sleep(0.01)
