@@ -19,31 +19,27 @@ pwmm = GPIO.PWM(n, 1)
 def mycallback(signal):
   pwm.start(0)
   pwmm.start(0)
-  while 1:
-    if(signal==y):
-      for dc in range(101):
-        pwm.ChangeDutyCycle(dc)
-        sleep(0.01)
-      for ic in range(101,0,-1):
-        pwm.ChangeDutyCycle(ic)
-        sleep(0.01)
-    if(signal==s):
-      for pc in range(101):
-        pwmm.ChangeDutyCycle(pc)
-        sleep(0.01)
-      for mc in range(101,0,-1):
-        pwmm.ChangeDutyCycle(mc)
-        sleep(0.01)
-
+  if(signal==y):
+    for dc in range(101):
+      pwm.ChangeDutyCycle(dc)
+      sleep(0.01)
+    for ic in range(101,0,-1):
+      pwm.ChangeDutyCycle(ic)
+      sleep(0.01)
+  if(signal==s):
+    for pc in range(101):
+      pwmm.ChangeDutyCycle(pc)
+      sleep(0.01)
+    for mc in range(101,0,-1):
+      pwmm.ChangeDutyCycle(mc)
+      sleep(0.01)
+pwmmm = GPIO.PWM(p,1)
 
 
 try:
-  GPIO.output(p,1)
-  sleep(1)
-  GPIO.output(p,0)
-  sleep(1)
-  GPIO.add_event_detect(y,GPIO.RISING,callback = mycallback, bouncetime = 100)
-  GPIO.add_event_detect(s,GPIO.FALLING,callback = mycallback, bouncetime = 100)
+  GPIO.add_event_detect(y,GPIO.RISING,callback = mycallback)
+  GPIO.add_event_detect(s,GPIO.FALLING,callback = mycallback)
+  pwm.start(50)
 except KeyboardInterrupt:
   print('\nExiting')
 pwm.stop()
